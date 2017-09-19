@@ -35,9 +35,9 @@ include_directories(
 # DEFINES ######################################################################
 ################################################################################
 
-if(UNIX)
+if(APPLE OR UNIX)
   add_definitions(-D_LINUX)
-endif(UNIX)
+endif(APPLE OR UNIX)
 
 if(VSXU_DEBUG)
   add_definitions( -DDEBUG )
@@ -74,7 +74,7 @@ add_executable(${module_id} ${SOURCES} ${HEADER_FILES} )
 
 include(${CMAKE_SOURCE_DIR}/cmake_suffix.txt)
 
-if(UNIX)
+if(APPLE OR UNIX)
   target_link_libraries(
     ${module_id}
     ${CMAKE_THREAD_LIBS_INIT}
@@ -92,7 +92,7 @@ if(UNIX)
     ${VSXU_GFX_LIB_LIBS}
     rt
   )
-endif(UNIX)
+endif(APPLE OR UNIX)
 
 if (WIN32)
   target_link_libraries(
@@ -121,7 +121,7 @@ install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_BIN_DIR} COMPONENT profi
 
 ######################################################################################
 # Install the Headers so as to install VSXu as a library
-if (UNIX OR VSXU_WINDOWS_LIB_BUILD)
+if (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
   file(GLOB HEADERS "include/*.h")
   install (FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/${VSXU_INSTALL_INCLUDE_DIR}/profiler COMPONENT Devel)
 endif()

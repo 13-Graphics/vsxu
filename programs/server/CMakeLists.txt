@@ -54,7 +54,7 @@ endif()
 
 set(OS_SOURCES "")
 
-if(UNIX)
+if(APPLE OR UNIX)
     set(SOURCES
       src/main.cpp
     )
@@ -100,4 +100,4 @@ if(UNIX)
   INSTALL (FILES ${CMAKE_CURRENT_BINARY_DIR}/vsxu-server-fullscreen.desktop
                  ${CMAKE_CURRENT_BINARY_DIR}/vsxu-server.desktop
            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
-ENDIF (UNIX)
+ENDIF (APPLE OR UNIX)

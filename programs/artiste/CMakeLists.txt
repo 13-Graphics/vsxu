@@ -37,7 +37,11 @@ include_directories(
 
 if(UNIX)
   add_definitions(-D_LINUX)
-endif(UNIX)
+endif()
+
+if(APPLE)
+  add_definitions(-D_LINUX -DMAC)
+endif()
 
 if(VSXU_DEBUG)
   add_definitions( -DDEBUG )
@@ -106,7 +110,7 @@ add_executable(${module_id} ${SOURCES} ${HEADER_FILES})
 
 include(${CMAKE_SOURCE_DIR}/cmake_suffix.txt)
 
-if(UNIX)
+if(APPLE OR UNIX)
   if (VSXU_STATIC)
     target_link_libraries(
       ${module_id}
@@ -148,7 +152,7 @@ if(UNIX)
       vsx_engine_graphics
     )
   endif()
-endif(UNIX)
+endif(APPLE OR UNIX)
 
 
 if(WIN32)

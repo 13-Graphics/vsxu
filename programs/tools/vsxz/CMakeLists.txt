@@ -58,10 +58,10 @@ target_link_libraries(${module_id}
   ${CMAKE_THREAD_LIBS_INIT}
 )
 
-if(UNIX)
+if(APPLE OR UNIX)
   target_link_libraries(${module_id}
     rt
   )
-endif(UNIX)
+endif(APPLE OR UNIX)
 
 install(TARGETS ${module_id} DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
