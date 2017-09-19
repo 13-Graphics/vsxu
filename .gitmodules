@@ -12,7 +12,7 @@
 	url = https://github.com/vovoid/ftgl.git
 [submodule "dependencies"]
 	path = dependencies
-	url = https://github.com/vovoid/vsxu-dependencies.git
+	url = https://github.com/vsxu-mac/vsxu-dependencies.git
 [submodule "lib/engine_graphics/thirdparty/lodepng"]
 	path = lib/engine_graphics/thirdparty/lodepng
 	url = https://github.com/vovoid/lodepng.git
