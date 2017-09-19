@@ -10,7 +10,12 @@
   #include <execinfo.h>
   #include <unistd.h>
   #include <string.h>
-  #include <malloc.h>
+
+  #if (defined(__APPLE__))
+    #include <malloc/malloc.h>
+  #else
+    #include <malloc.h>
+  #endif
 #endif
 
 #if (PLATFORM_FAMILY == PLATFORM_FAMILY_WINDOWS)
