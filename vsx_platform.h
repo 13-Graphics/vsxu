@@ -49,6 +49,7 @@
         #define VSXU_PLUGIN_LOCATION                           vsx_string<>("plugins/")
 
     #elif defined(__APPLE__) || defined(__MACH__)
+	    #define COMPILER COMPILER_GCC
         #define PLATFORM                                        PLATFORM_MACINTOSH
         #define PLATFORM_NAME                                   "Macintosh"
         #define PLATFORM_FAMILY                                 PLATFORM_FAMILY_UNIX
