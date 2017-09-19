@@ -51,7 +51,7 @@
     #elif defined(__APPLE__) || defined(__MACH__)
 	    #define COMPILER COMPILER_GCC
         #define PLATFORM                                        PLATFORM_MACINTOSH
-        #define PLATFORM_NAME                                   "Macintosh"
+        #define PLATFORM_NAME                                   "macOS"
         #define PLATFORM_FAMILY                                 PLATFORM_FAMILY_UNIX
         #define PLATFORM_SHARED_FILES                           vsx_string<>("")
         #define PLATFORM_DLL_SUFFIX                             ".so"
