@@ -92,7 +92,7 @@ else ()
 endif ()
 
 
-if (APPLE OR UNIX)
+if (UNIX)
   install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_LIB_DIR} COMPONENT widget)
 
   ######################################################################################
@@ -114,21 +114,6 @@ target_link_libraries(
   ${CMAKE_THREAD_LIBS_INIT}
 )
 endif(UNIX)
-
-if(APPLE)
-target_link_libraries(
-  ${module_id}
-  ${JPEG_LIBRARIES}
-  ${PNG_LIBRARIES}
-  ${ZLIB_LIBRARIES}
-  ${GLFW_LIBRARIES}
-  ${GLEW_LIBRARIES}
-  vsx_engine
-  ${OPENGL_LIBRARIES}
-  ${CMAKE_THREAD_LIBS_INIT}
-)
-endif(APPLE)
-
 
 if(WIN32)
   target_link_libraries(

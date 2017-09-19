@@ -184,13 +184,13 @@ else ()
   add_library(${module_id} SHARED ${SOURCES} ${SOURCES_FTGL} ${SOURCES_PERLIN} ${HEADER_FILES} ${SOURCES_LODEPNG})
 endif()
 
-if (APPLE OR UNIX)
+if (UNIX)
   install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_LIB_DIR} COMPONENT engine)
 endif()
 
 ######################################################################################
 # Install the Headers so as to install VSXu as a library
-if (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
+if (UNIX OR VSXU_WINDOWS_LIB_BUILD)
   install (DIRECTORY "include/" DESTINATION ${CMAKE_INSTALL_PREFIX}/${VSXU_INSTALL_INCLUDE_DIR}/engine_graphics COMPONENT Devel)
   install(FILES ${CMAKE_SOURCE_DIR}/share/icons/vsxu.xpm DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps/)
   install(FILES ${CMAKE_SOURCE_DIR}/share/icons/hicolor/16x16/apps/vsxu.png DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps/hicolor/apps/16x16)

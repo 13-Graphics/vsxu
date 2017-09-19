@@ -55,7 +55,7 @@ enable_testing()
 
 ######################################################################################
 # Install the Global Headers so as to install VSXu as a library
-if (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
+if (UNIX OR VSXU_WINDOWS_LIB_BUILD)
   file(GLOB HEADERS "*.h")
   install (FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/${VSXU_INSTALL_INCLUDE_DIR} COMPONENT Devel)
 endif()
@@ -160,7 +160,7 @@ endif(UNIX)
 ################################################################################
 # The pkg-config file
 ################################################################################
-IF (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
+IF (UNIX OR VSXU_WINDOWS_LIB_BUILD)
   if (VSXU_STATIC EQUAL 1 AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/static_factory_pkgconfig_libs")
     file (STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/static_factory_pkgconfig_libs" VSXU_PLUGIN_PKGCONFIG_LIBS)
     CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/libvsx.pc.in.static

@@ -154,7 +154,7 @@ else ()
   add_library(${module_id} SHARED ${SOURCES} ${HEADER_FILES} ${GAME_MONKEY})
 endif ()
 
-if (APPLE OR UNIX)
+if (UNIX)
   install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_LIB_DIR} COMPONENT engine)
 
 ######################################################################################
