@@ -29,6 +29,13 @@ if(CMAKE_SYSTEM_NAME MATCHES "Linux")
     set(VSXU_INSTALL_SHARE_DIR "share/vsxu")
 endif()
 
+if(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+    set(VSXU_INSTALL_INCLUDE_DIR "include/vsxu")
+    set(VSXU_INSTALL_LIB_DIR "lib${LIB_SUFFIX}")
+    set(VSXU_INSTALL_BIN_DIR "bin")
+    set(VSXU_INSTALL_SHARE_DIR "share/vsxu")
+endif()
+
 if(CMAKE_SYSTEM_NAME STREQUAL "Windows")
     if (VSXU_WINDOWS_LIB_BUILD)
       set(VSXU_INSTALL_INCLUDE_DIR "include/vsxu")
@@ -48,7 +55,7 @@ enable_testing()
 
 ######################################################################################
 # Install the Global Headers so as to install VSXu as a library
-if (UNIX OR VSXU_WINDOWS_LIB_BUILD)
+if (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
   file(GLOB HEADERS "*.h")
   install (FILES ${HEADERS} DESTINATION ${CMAKE_INSTALL_PREFIX}/${VSXU_INSTALL_INCLUDE_DIR} COMPONENT Devel)
 endif()
@@ -153,7 +160,7 @@ endif(UNIX)
 ################################################################################
 # The pkg-config file
 ################################################################################
-IF (UNIX OR VSXU_WINDOWS_LIB_BUILD)
+IF (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
   if (VSXU_STATIC EQUAL 1 AND EXISTS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/static_factory_pkgconfig_libs")
     file (STRINGS "${CMAKE_CURRENT_SOURCE_DIR}/plugins/static_factory_pkgconfig_libs" VSXU_PLUGIN_PKGCONFIG_LIBS)
     CONFIGURE_FILE (${CMAKE_CURRENT_SOURCE_DIR}/libvsx.pc.in.static
@@ -182,4 +189,3 @@ configure_file(
 
 add_custom_target(uninstall
     COMMAND ${CMAKE_COMMAND} -P ${CMAKE_CURRENT_BINARY_DIR}/cmake_uninstall.cmake)
-

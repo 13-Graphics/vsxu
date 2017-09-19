@@ -177,20 +177,20 @@ thirdparty/mini-jpeg
 file(GLOB_RECURSE HEADER_FILES *.h)
 
 
-if (VSXU_STATIC EQUAL 1)  
+if (VSXU_STATIC EQUAL 1)
   #static build
   add_library(${module_id} STATIC ${SOURCES} ${SOURCES_FTGL} ${SOURCES_PERLIN} ${HEADER_FILES} ${SOURCES_LODEPNG})
 else ()
   add_library(${module_id} SHARED ${SOURCES} ${SOURCES_FTGL} ${SOURCES_PERLIN} ${HEADER_FILES} ${SOURCES_LODEPNG})
 endif()
 
-if (UNIX)
-install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_LIB_DIR} COMPONENT engine)
+if (APPLE OR UNIX)
+  install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_LIB_DIR} COMPONENT engine)
 endif()
 
 ######################################################################################
 # Install the Headers so as to install VSXu as a library
-if (UNIX OR VSXU_WINDOWS_LIB_BUILD)
+if (APPLE OR UNIX OR VSXU_WINDOWS_LIB_BUILD)
   install (DIRECTORY "include/" DESTINATION ${CMAKE_INSTALL_PREFIX}/${VSXU_INSTALL_INCLUDE_DIR}/engine_graphics COMPONENT Devel)
   install(FILES ${CMAKE_SOURCE_DIR}/share/icons/vsxu.xpm DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps/)
   install(FILES ${CMAKE_SOURCE_DIR}/share/icons/hicolor/16x16/apps/vsxu.png DESTINATION ${CMAKE_INSTALL_PREFIX}/share/pixmaps/hicolor/apps/16x16)
@@ -227,4 +227,3 @@ target_link_libraries(
   ${PNG_LIBRARIES}
   ${ZLIB_LIBRARIES}
 )
-

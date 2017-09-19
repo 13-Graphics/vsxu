@@ -53,7 +53,7 @@ add_definitions(
  -DMOD_CNM=create_new_module
  -DMOD_DM=destroy_module
  -DMOD_GNM=get_num_modules
-) 
+)
 
 
 if (VSXU_DEBUG EQUAL 1)
@@ -70,7 +70,7 @@ if(ENGINE_SCRIPTING)
     src/core/scripting/game_monkey
     src/core/scripting/game_monkey/gm
   )
-  set(GAME_MONKEY 
+  set(GAME_MONKEY
     src/core/scripting/game_monkey/binds/gmStringLib.cpp
     src/core/scripting/game_monkey/binds/gmGCRootUtil.cpp
     src/core/scripting/game_monkey/binds/gmHelpers.cpp
@@ -154,7 +154,7 @@ else ()
   add_library(${module_id} SHARED ${SOURCES} ${HEADER_FILES} ${GAME_MONKEY})
 endif ()
 
-if (UNIX)
+if (APPLE OR UNIX)
   install(TARGETS ${module_id} DESTINATION ${VSXU_INSTALL_LIB_DIR} COMPONENT engine)
 
 ######################################################################################
@@ -167,4 +167,3 @@ target_link_libraries(${module_id}
   ${DL_LIBRARY}
   vsx_common
 )
-
