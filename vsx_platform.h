@@ -53,14 +53,14 @@
         #define PLATFORM                                        PLATFORM_MACINTOSH
         #define PLATFORM_NAME                                   "macOS"
         #define PLATFORM_FAMILY                                 PLATFORM_FAMILY_UNIX
-        #define PLATFORM_SHARED_FILES                           vsx_string<>("")
-        #define PLATFORM_DLL_SUFFIX                             ".so"
+        #define PLATFORM_SHARED_FILES                           vsx_string<>("/Library/Application Support/VSXu/")
+		#define VSXU_PLUGIN_LOCATION                            vsx_string<>("/Library/Application Support/VSXu/plugins/")
+        #define PLATFORM_DLL_SUFFIX                             ".dylib"
         #ifdef PLATFORM_SHARED_FILES_STL
-          #define PLATFORM_SHARED_FILES_STLSTRING               std::string("")
+          #define PLATFORM_SHARED_FILES_STLSTRING               std::string("/Library/Application Support/VSXu/")
         #endif
         #define DIRECTORY_SEPARATOR                             "/"
         #define DIRECTORY_SEPARATOR_CHAR                        '/'
-        #define VSXU_PLUGIN_LOCATION                           vsx_string<>("plugins/")
     #elif defined(linux) || defined(__linux) || defined(__linux__) || defined(__CYGWIN__)
         #define COMPILER COMPILER_GCC
         #define PLATFORM                                        PLATFORM_LINUX
